@@ -53,22 +53,6 @@
       overflow: hidden;
     }
 
-    .header-isometric {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      opacity: 0.15;
-      background-image: url('https://raw.githubusercontent.com/stoner416/202601113jang/main/%40(2025.13)%20%5B%EB%8C%80%ED%95%99%EC%9B%90%5D%20%EC%9E%A5%EC%A4%80%ED%98%95%20%EA%B5%90%EC%88%98%EB%8B%98/(13.13.)%202%EC%9D%BC%EC%B0%A8/hero.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      z-index: 0;
-      pointer-events: none;
-    }
-
     header h1,
     header p {
       position: relative;
@@ -112,16 +96,7 @@
     }
 
     .section-header {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
       margin-bottom: 2rem;
-    }
-
-    .section-icon {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
     }
 
     h2 {
@@ -311,16 +286,12 @@
 
 <body data-admin="false">
   <header>
-    <div class="header-isometric"></div>
     <h1>6학년 1반 우리 반 홈페이지</h1>
-    <p>장준형 선생님과 함께하는 즐거운 교실, 가정과 학교가 만나는 따뜻한 소통 공간</p>
+    <p>선생님과 함께하는 즐거운 교실, 가정과 학교가 만나는 따뜻한 소통 공간</p>
   </header>
   <main>
     <section aria-labelledby="login-title" id="login-section">
       <div class="section-header">
-        <img
-          src="https://raw.githubusercontent.com/stoner416/202601113jang/main/%40(2025.13)%20%5B%EB%8C%80%ED%95%99%EC%9B%90%5D%20%EC%9E%A5%EC%A4%80%ED%98%95%20%EA%B5%90%EC%88%98%EB%8B%98/(13.13.)%202%EC%9D%BC%EC%B0%A8/member.png"
-          alt="" class="section-icon">
         <h2 id="login-title" style="margin:0">관리자 로그인</h2>
       </div>
       <p>ADMIN_ACCOUNT (jangadmin / class6star!)으로 로그인하면 우리 반 홈페이지 전체가 열립니다.</p>
@@ -361,9 +332,6 @@
 
     <section aria-labelledby="news-title" data-protected hidden>
       <div class="section-header">
-        <img
-          src="https://raw.githubusercontent.com/stoner416/202601113jang/main/%40(2025.13)%20%5B%EB%8C%80%ED%95%99%EC%9B%90%5D%20%EC%9E%A5%EC%A4%80%ED%98%95%20%EA%B5%90%EC%88%98%EB%8B%98/(13.13.)%202%EC%9D%BC%EC%B0%A8/notice.png"
-          alt="" class="section-icon">
         <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.75rem">
           <h2 id="news-title" style="margin:0">가정통신문 & 새 소식</h2>
           <span style="color: var(--muted)">업데이트일: 2025-12-12</span>
@@ -374,9 +342,6 @@
 
     <section aria-labelledby="newsletter-title" data-protected hidden>
       <div class="section-header">
-        <img
-          src="https://raw.githubusercontent.com/stoner416/202601113jang/main/%40(2025.13)%20%5B%EB%8C%80%ED%95%99%EC%9B%90%5D%20%EC%9E%A5%EC%A4%80%ED%98%95%20%EA%B5%90%EC%88%98%EB%8B%98/(13.13.)%202%EC%9D%BC%EC%B0%A8/newsletter.png"
-          alt="" class="section-icon">
         <h2 id="newsletter-title" style="margin:0">가정통신문 이메일로 받기</h2>
       </div>
       <p>가정에서 간편하게 소식을 받아보세요. 신청하면 다음 발송에 자동으로 포함됩니다.</p>
@@ -394,9 +359,6 @@
     <section class="grid-two" aria-label="회원 서비스" data-protected hidden>
       <div>
         <div class="section-header">
-          <img
-            src="https://raw.githubusercontent.com/stoner416/202601113jang/main/%40(2025.13)%20%5B%EB%8C%80%ED%95%99%EC%9B%90%5D%20%EC%9E%A5%EC%A4%80%ED%98%95%20%EA%B5%90%EC%88%98%EB%8B%98/(13.13.)%202%EC%9D%BC%EC%B0%A8/member.png"
-            alt="" class="section-icon">
           <h2 style="margin:0">회원가입</h2>
         </div>
         <form data-form="signup">
@@ -436,9 +398,6 @@
 
     <section aria-labelledby="message-title" data-protected hidden>
       <div class="section-header">
-        <img
-          src="https://raw.githubusercontent.com/stoner416/202601113jang/main/%40(2025.13)%20%5B%EB%8C%80%ED%95%99%EC%9B%90%5D%20%EC%9E%A5%EC%A4%80%ED%98%95%20%EA%B5%90%EC%88%98%EB%8B%98/(13.13.)%202%EC%9D%BC%EC%B0%A8/board.png"
-          alt="" class="section-icon">
         <h2 id="message-title" style="margin:0">자유롭게 한마디</h2>
       </div>
       <p>학생과 학부모 모두 전하고 싶은 말을 남겨주세요.</p>
