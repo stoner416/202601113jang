@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="6학년 1반 소식, 가정통신문 신청, 회원가입·로그인, 자유게시판을 모두 담은 학급 홈페이지입니다." />
+  <meta property="og:title" content="6학년 1반 우리 반 홈페이지" />
+  <meta property="og:description" content="가정과 학급이 함께 만나는 따뜻한 소통 공간" />
+  <meta name="theme-color" content="#ff8a5b" />
+  <title>6학년 1반 우리 반 홈페이지</title>
+  <style>
+    :root {
+      --primary: #ff8a5b;
+      --primary-light: #ffb38a;
+      --secondary: #6c5ce7;
+      --accent: #00cec9;
+      --surface: rgba(255, 255, 255, 0.85);
+      --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+      --text: #2d3436;
+      --muted: #636e72;
+      --glass: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.1);
+      font-family: "Pretendard", "맑은 고딕", "Malgun Gothic", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      padding: 5rem 1.5rem 8rem;
+      text-align: center;
+      border-bottom-left-radius: 120px;
+      border-bottom-right-radius: 120px;
+      box-shadow: var(--shadow-premium);
+      overflow: hidden;
+    }
+
+    .header-isometric {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      opacity: 0.15;
+      background-image: url('isometric_school_hero_1768269385988.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header h1,
+    header p {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 520px;
+      line-height: 1.5;
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: -60px auto 80px;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      padding: 2.5rem;
+      margin-top: 2.5rem;
+      box-shadow: var(--shadow-premium);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-icon {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.6rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .card {
+      border-radius: 24px;
+      padding: 1.5rem;
+      background: var(--glass);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      background: #fff;
+      transform: scale(1.02);
+    }
+
+    .card h3 {
+      margin: 0 0 0.35rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      border: 2px solid #ffe1c4;
+      border-radius: 16px;
+      padding: 0.85rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+      background: #fffdf9;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 138, 91, 0.2);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.9rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(130deg, var(--secondary), var(--primary));
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(255, 138, 91, 0.4);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .list li {
+      background: #fff9f3;
+      border-radius: 18px;
+      padding: 0.85rem 1rem;
+      border: 1px solid #ffe3ca;
+    }
+
+    .list time {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 32px;
+      transform: translateX(-50%) translateY(200%);
+      background: var(--primary);
+      color: #fff;
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      box-shadow: 0 15px 30px rgba(255, 138, 91, 0.4);
+      transition: transform 0.4s ease;
+      z-index: 10;
+    }
+
+    .toast[data-show="true"] {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      margin: 2.5rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --surface: #1f1f28;
+        --text: #f5f5f7;
+        --muted: #b5b5c0;
+      }
+
+      body {
+        background: radial-gradient(circle at top left, #332b3a, #1d1b2f);
+      }
+
+      section {
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .card {
+        background: rgba(255, 234, 174, 0.08);
+      }
+
+      input,
+      textarea {
+        background: #2b2a33;
+        color: inherit;
+        border-color: #3c3b45;
+      }
+
+      .list li {
+        background: rgba(255, 249, 243, 0.08);
+        border-color: #3b3140;
+      }
+    }
+  </style>
+</head>
+
+<body data-admin="false">
+  <header>
+    <div class="header-isometric"></div>
+    <h1>6학년 1반 우리 반 홈페이지</h1>
+    <p>장준형 선생님과 함께하는 즐거운 교실, 가정과 학교가 만나는 따뜻한 소통 공간</p>
+  </header>
+  <main>
+    <section aria-labelledby="login-title" id="login-section">
+      <div class="section-header">
+        <img src="isometric_member_icon_1768269433293.png" alt="" class="section-icon">
+        <h2 id="login-title" style="margin:0">관리자 로그인</h2>
+      </div>
+      <p>ADMIN_ACCOUNT (jangadmin / class6star!)으로 로그인하면 우리 반 홈페이지 전체가 열립니다.</p>
+      <div class="grid-two" style="margin-top: 1.25rem">
+        <div>
+          <p data-user-status style="font-weight:600; color:var(--muted); margin-bottom:0.75rem">
+            아직 로그인하지 않았어요.
+          </p>
+          <div style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1rem">
+            <button type="button" data-google-login style="background:#fff; color:#1f1f1f; border:2px solid #ffe1c4">
+              Google 계정으로 로그인
+            </button>
+            <button type="button" data-google-logout hidden>
+              Google 계정 로그아웃
+            </button>
+            <small style="color:var(--muted)">Google OAuth로 로그인하면 Firestore에 기록됩니다.</small>
+          </div>
+          <form data-form="login">
+            <label for="login-id">아이디</label>
+            <input type="text" id="login-id" name="loginId" placeholder="아이디" required />
+            <label for="login-password">비밀번호</label>
+            <input type="password" id="login-password" name="loginPassword" placeholder="비밀번호" required />
+            <button type="submit">로그인</button>
+          </form>
+          <small style="color:var(--muted)">관리자 외 로그인은 페이지를 열 수 없어요.</small>
+        </div>
+        <div class="card" style="border:2px solid #ffd9b5">
+          <h3>접속 안내</h3>
+          <p>관리자 로그인에 성공하면 아래 섹션(가정통신문, 게시판 등)이 자동으로 나타납니다.</p>
+          <ul style="padding-left: 1.2rem; margin:0; display:grid; gap:0.4rem; color:#5e4a00">
+            <li>로그인 이후 다시 방문하면 자동으로 복원돼요.</li>
+            <li>공유 PC에서는 사용 후 관리자 로그아웃을 눌러 주세요.</li>
+            <li>Google 로그인은 별도 기록용입니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="news-title" data-protected hidden>
+      <div class="section-header">
+        <img src="isometric_notice_icon_1768269401199.png" alt="" class="section-icon">
+        <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.75rem">
+          <h2 id="news-title" style="margin:0">가정통신문 & 새 소식</h2>
+          <span style="color: var(--muted)">업데이트일: 2025-12-12</span>
+        </div>
+      </div>
+      <div class="cards" data-notice-list></div>
+    </section>
+
+    <section aria-labelledby="newsletter-title" data-protected hidden>
+      <div class="section-header">
+        <img src="isometric_newsletter_icon_1768269416608.png" alt="" class="section-icon">
+        <h2 id="newsletter-title" style="margin:0">가정통신문 이메일로 받기</h2>
+      </div>
+      <p>가정에서 간편하게 소식을 받아보세요. 신청하면 다음 발송에 자동으로 포함됩니다.</p>
+      <form data-form="newsletter">
+        <label for="parent-name">학부모님 성함</label>
+        <input type="text" id="parent-name" name="parentName" placeholder="예: 김우리" required />
+        <label for="student-name">학생 이름</label>
+        <input type="text" id="student-name" name="studentName" placeholder="예: 김꿈틀" required />
+        <label for="parent-email">이메일</label>
+        <input type="email" id="parent-email" name="parentEmail" placeholder="예: happy@school.kr" required />
+        <button type="submit">신청하기</button>
+      </form>
+    </section>
+
+    <section class="grid-two" aria-label="회원 서비스" data-protected hidden>
+      <div>
+        <div class="section-header">
+          <img src="isometric_member_icon_1768269433293.png" alt="" class="section-icon">
+          <h2 style="margin:0">회원가입</h2>
+        </div>
+        <form data-form="signup">
+          <label for="signup-id">아이디</label>
+          <input type="text" id="signup-id" name="signupId" placeholder="아이디를 입력하세요" minlength="4" required />
+          <label for="signup-password">비밀번호</label>
+          <input type="password" id="signup-password" name="signupPassword" placeholder="8자 이상" minlength="8"
+            required />
+          <label for="signup-email">이메일</label>
+          <input type="email" id="signup-email" name="signupEmail" placeholder="예: hello@school.kr" required />
+          <button type="submit">가입하기</button>
+        </form>
+      </div>
+      <div class="card" style="border:2px solid #ffd9b5">
+        <h3>학급 알림</h3>
+        <p>회원가입을 하면 숙제, 사진, 알림장을 한 번에 확인할 수 있는 공간이 열립니다.</p>
+        <ul style="padding-left:1.2rem; margin:0; display:grid; gap:0.35rem">
+          <li>숙제 제출 현황을 교실과 공유</li>
+          <li>학부모 상담 예약 현황 확인</li>
+          <li>반 친구들과 응원 메시지 남기기</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="admin-panel" data-protected hidden aria-labelledby="admin-title">
+      <h2 id="admin-title">관리자 콘솔</h2>
+      <p data-admin-status>관리자 모드가 켜지면 파이어베이스 데이터 현황을 확인할 수 있어요.</p>
+      <div style="margin-top: 1rem; background:#fff7ea; border-radius:18px; padding:1rem; border:1px solid #ffe0b0">
+        <p style="margin:0 0 0.5rem"><strong>Firestore 임시 규칙</strong></p>
+        <p style="margin:0; color:#6b4b00">
+          2026년 2월 11일까지 누구나 읽기/쓰기 가능한 테스트 규칙이 적용 중입니다.
+          <br />만료 전에 반드시 보안 규칙을 강화해주세요.
+        </p>
+      </div>
+      <button type="button" data-admin-logout style="margin-top:1rem; width:200px">관리자 로그아웃</button>
+    </section>
+
+    <section aria-labelledby="message-title" data-protected hidden>
+      <div class="section-header">
+        <img src="isometric_board_icon_retry_1768269469055.png" alt="" class="section-icon">
+        <h2 id="message-title" style="margin:0">자유롭게 한마디</h2>
+      </div>
+      <p>학생과 학부모 모두 전하고 싶은 말을 남겨주세요.</p>
+      <form data-form="board">
+        <label for="message-writer">작성자</label>
+        <input type="text" id="message-writer" name="messageWriter" placeholder="이름 또는 별명" required />
+        <label for="message-content">메시지</label>
+        <textarea id="message-content" name="messageContent" placeholder="오늘 있었던 기쁜 일을 나눠요 :)" required></textarea>
+        <button type="submit">남기기</button>
+      </form>
+      <ul class="list" data-board-list aria-live="polite"></ul>
+    </section>
+  </main>
+  <footer>© 2025 6학년 1반 · 문의: homeroom@classroom.kr</footer>
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+    import {
+      getAuth,
+      signInWithPopup,
+      GoogleAuthProvider,
+      signOut,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      getDocs,
+      serverTimestamp,
+      query,
+      orderBy
+    } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCYkqiS_gyhfArVTIV4OPIPAzc8DGn333k",
+      authDomain: "jang-db278.firebaseapp.com",
+      projectId: "jang-db278",
+      storageBucket: "jang-db278.firebasestorage.app",
+      messagingSenderId: "636003735694",
+      appId: "1:636003735694:web:281075a5a4a3ce5c68d1df",
+      measurementId: "G-DTBMH9JVTN"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
+    googleProvider.setCustomParameters({ prompt: "select_account" });
+    const db = getFirestore(app);
+    const ADMIN_ACCOUNT = { id: "jangadmin", password: "class6star!" };
+    const ADMIN_STORAGE_KEY = "class6-admin-auth";
+    const adminPanel = document.getElementById("admin-panel");
+    const adminStatus = adminPanel?.querySelector("[data-admin-status]");
+    const adminLogoutBtn = adminPanel?.querySelector("[data-admin-logout]");
+    const googleLoginBtn = document.querySelector("[data-google-login]");
+    const googleLogoutBtn = document.querySelector("[data-google-logout]");
+    const userStatusText = document.querySelector("[data-user-status]");
+    const toggleProtectedSections = (shouldShow) => {
+      document.querySelectorAll("[data-protected]").forEach((section) => {
+        section.hidden = !shouldShow;
+      });
+    };
+
+    const toast = document.querySelector(".toast");
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.dataset.show = "true";
+      setTimeout(() => {
+        toast.dataset.show = "false";
+      }, 2600);
+    };
+
+    const notices = [
+      { title: "12월 체육대회", desc: "12월 20일(금) 운동장에서 6학년 체육대회가 열립니다. 간편한 운동복과 물을 준비해주세요.", date: "2025-12-12" },
+      { title: "겨울 방학 안내", desc: "방학은 12월 30일부터 시작합니다. 독서 기록장을 12월 27일까지 제출해주세요.", date: "2025-12-10" },
+      { title: "학부모 상담 주간", desc: "12월 둘째 주에 상담이 진행됩니다. 신청 폼에서 편한 시간을 골라주세요.", date: "2025-12-08" }
+    ];
+
+    const noticeContainer = document.querySelector("[data-notice-list]");
+    noticeContainer.innerHTML = notices
+      .map(
+        (notice) => `
+            <article class="card">
+              <h3>${notice.title}</h3>
+              <p>${notice.desc}</p>
+              <time datetime="${notice.date}">발행일: ${notice.date}</time>
+            </article>
+          `
+      )
+      .join("");
+
+    const boardList = document.querySelector("[data-board-list]");
+    const addBoardItem = (item, { prepend = false } = {}) => {
+      const li = document.createElement("li");
+      const rawDate = item.createdAt?.toDate ? item.createdAt.toDate() : new Date(item.createdAt || Date.now());
+      li.innerHTML = `<strong>${item.messageWriter}</strong><p style="margin:0.35rem 0">${item.messageContent}</p><time>${rawDate.toLocaleString(
+        "ko-KR"
+      )}</time>`;
+      if (prepend) {
+        boardList.prepend(li);
+      } else {
+        boardList.append(li);
+      }
+    };
+
+    const isAdminCredential = (data) => data.loginId === ADMIN_ACCOUNT.id && data.loginPassword === ADMIN_ACCOUNT.password;
+
+    const enableAdminMode = () => {
+      document.body.dataset.admin = "true";
+      toggleProtectedSections(true);
+      if (adminStatus) {
+        adminStatus.textContent = "관리자 모드가 활성화되었습니다. Firestore 데이터 현황을 점검하세요.";
+      }
+      localStorage.setItem(ADMIN_STORAGE_KEY, "true");
+    };
+
+    const disableAdminMode = () => {
+      document.body.dataset.admin = "false";
+      toggleProtectedSections(false);
+      if (adminStatus) {
+        adminStatus.textContent = "관리자 모드가 켜지면 파이어베이스 데이터 현황을 확인할 수 있어요.";
+      }
+      localStorage.removeItem(ADMIN_STORAGE_KEY);
+    };
+
+    adminLogoutBtn?.addEventListener("click", () => {
+      disableAdminMode();
+      showToast("관리자 모드가 종료되었습니다.");
+    });
+
+    const loadBoardMessages = async () => {
+      boardList.innerHTML = "<li>게시판을 불러오는 중입니다...</li>";
+      try {
+        const boardQuery = query(collection(db, "board"), orderBy("createdAt", "desc"));
+        const snapshot = await getDocs(boardQuery);
+        boardList.innerHTML = "";
+        if (snapshot.empty) {
+          boardList.innerHTML = "<li>첫 메시지를 남겨주세요!</li>";
+          return;
+        }
+        snapshot.forEach((doc) => addBoardItem(doc.data()));
+      } catch (error) {
+        console.error(error);
+        boardList.innerHTML = "<li>메시지를 불러오지 못했어요. 새로고침 해주세요.</li>";
+      }
+    };
+
+    const messages = {
+      newsletter: "가정통신문 신청이 완료되었어요!",
+      signup: "회원가입 신청이 Firestore에 저장되었습니다!",
+      login: "로그인 요청이 기록되었습니다!",
+      board: "메시지가 게시판에 추가되었어요!"
+    };
+
+    document.querySelectorAll("form[data-form]").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        const formName = form.dataset.form;
+        const formData = Object.fromEntries(new FormData(form).entries());
+        if (formName === "login" && isAdminCredential(formData)) {
+          enableAdminMode();
+          showToast("관리자 모드가 활성화되었습니다.");
+          form.reset();
+          submitButton.disabled = false;
+          return;
+        }
+        try {
+          await addDoc(collection(db, formName), {
+            ...formData,
+            createdAt: serverTimestamp()
+          });
+          if (formName === "board") {
+            addBoardItem({ ...formData, createdAt: new Date() }, { prepend: true });
+          }
+          showToast(messages[formName] ?? "저장되었습니다.");
+          form.reset();
+        } catch (error) {
+          console.error(error);
+          showToast("저장 중 문제가 발생했어요. 잠시 후 다시 시도해주세요.");
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    });
+
+    const updateUserStatus = (user) => {
+      if (!userStatusText) return;
+      if (user) {
+        userStatusText.textContent = `${user.displayName ?? "익명"} (${user.email ?? "이메일 없음"})님이 로그인 중이에요.`;
+        userStatusText.style.color = "var(--primary)";
+        googleLoginBtn?.setAttribute("hidden", "true");
+        googleLogoutBtn?.removeAttribute("hidden");
+      } else {
+        userStatusText.textContent = "아직 로그인하지 않았어요.";
+        userStatusText.style.color = "var(--muted)";
+        googleLoginBtn?.removeAttribute("hidden");
+        googleLogoutBtn?.setAttribute("hidden", "true");
+      }
+    };
+
+    googleLoginBtn?.addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, googleProvider);
+        const user = result.user;
+        await addDoc(collection(db, "login"), {
+          loginId: user.uid,
+          loginEmail: user.email ?? "",
+          provider: "google",
+          displayName: user.displayName ?? "무명 사용자",
+          createdAt: serverTimestamp()
+        });
+        showToast("Google 로그인에 성공했어요!");
+      } catch (error) {
+        console.error(error);
+        showToast("Google 로그인에 실패했습니다.");
+      }
+    });
+
+    googleLogoutBtn?.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        showToast("로그아웃되었습니다.");
+      } catch (error) {
+        console.error(error);
+        showToast("로그아웃 중 문제가 발생했습니다.");
+      }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      updateUserStatus(user);
+    });
+
+    if (localStorage.getItem(ADMIN_STORAGE_KEY) === "true") {
+      enableAdminMode();
+    }
+
+    loadBoardMessages();
+  </script>
+</body>
+
+</html>
